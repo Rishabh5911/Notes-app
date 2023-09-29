@@ -33,7 +33,7 @@ app.post('/newNote', (req, res)=>{
         }
         res.send('OK')
     })
-    console.log(newNote)
+    // console.log(newNote)     // log the details of created note
 })
 
 // read
