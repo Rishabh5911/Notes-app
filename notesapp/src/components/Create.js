@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { BASE_URL } from '../help/helper';
 
 const Create = () => {
   const [title, setTitle] = useState("");
@@ -12,7 +13,8 @@ const Create = () => {
       title: title,
       note: note,
     };
-    Axios.post(`http://localhost:4000/newNote`, noteObj).then(() => {
+
+    Axios.post(`${BASE_URL}/newNote`, noteObj).then(() => {
       alert("Created");
     });
   };

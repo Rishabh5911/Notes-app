@@ -5,6 +5,8 @@ import { useContext } from 'react'
 import Axios from "axios";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { BASE_URL } from '../help/helper';
+
 
 const Edit = () => {
 
@@ -12,12 +14,14 @@ const Edit = () => {
   const [title,setTitle] = useState(post.title)
   const [note,setNote] = useState(post.note);
 
+  
+
   const updateSubmit = (id) => {
     const noteObj = {
       title: title,
       note: note,
     };
-    Axios.put(`http://localhost:4000/update/${id}`, noteObj).then(() => {
+    Axios.put(`${BASE_URL}/update/${id}`, noteObj).then(() => {
       alert("Updated");
     });
   };

@@ -5,19 +5,21 @@ import parse from "html-react-parser";
 import {itemStateContext} from './Context';
 import {Link} from 'react-router-dom';
 import { useContext } from "react";
+import { BASE_URL } from '../help/helper';
 
 const Notes = () => {
   const [items, setItems] = useState([]);
   const {setPost} = useContext(itemStateContext);
+  
 
   useEffect(() => {
-    Axios.get("http://localhost:4000/notes")
+    Axios.get(`${BASE_URL}/notes`)
       .then((res) => setItems(res.data))
       .catch((err) => console.log(err));
   }, []);
 
   function deleteNote(id) {
-    Axios.delete(`http://localhost:4000/deleteNote/${id}`).then(() => {
+    Axios.delete(`${BASE_URL}/deleteNote/${id}`).then(() => {
       window.location.reload(false);
     });
   }
